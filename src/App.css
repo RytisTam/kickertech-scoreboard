@@ -1,0 +1,81 @@
+body {
+  background-color: white;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 10vh;
+}
+
+.container .newTeamInput {
+  margin-bottom: 10px;
+}
+
+.container .newTeamInput input {
+  padding: 5px;
+  border-radius: 5px;
+  border: 2px solid #bdbdbd;
+}
+
+.container .newTeamInput [type="submit"] {
+  margin-left: 5px;
+  padding: 5px 25px;
+}
+
+.teamTable table {
+  border: solid 3px;
+  border-color: blue;
+  text-align: center;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.teamTable table td, .teamTable table th {
+  padding: 5px 15px;
+  border: solid 2px #D4D4D4;
+}
+
+.teamTable table th {
+  background-color: #E5E5E5;
+}
+
+.matchHistory {
+  margin-left: 20px;
+}
+
+.matchHistory input {
+  width: 15px;
+  margin: 2px;
+  -moz-appearance: textfield;
+}
+
+.matchHistory input:first-child {
+  text-align: right;
+}
+
+.matchHistory :disabled {
+  border-style: none;
+}
+
+.matchHistory td:first-child, .matchHistory td:nth-child(2) {
+  text-align: right;
+}
+
+.matchHistory td:nth-child(4) input {
+  text-align: left;
+}
+
+.scoreboard {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+/*# sourceMappingURL=App.css.map */

@@ -4,7 +4,7 @@ export const countScore = (state, team) => {
   let countLoses = 0;
   let countPoints = 0;
 
-  state.matches.map((match) => {
+  state.matches.forEach((match) => {
     if (match.hasOwnProperty(team.teamName) && match.outcome !== null) {
       if (match.outcome === "draw") {
         countDraws++;

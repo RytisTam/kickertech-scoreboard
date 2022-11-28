@@ -1,38 +1,83 @@
-.App {
-  text-align: center;
+body {
+  background-color: white;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.container {
+  display:flex;
+  justify-content:center;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding-top:10vh;
+
+  .newTeamInput {
+
+    margin-bottom:10px;
+
+    input {
+      padding:5px;
+      border-radius:5px;
+      border:2px solid #bdbdbd;
+    }
+
+    [type="submit"] {
+      margin-left:5px;
+      padding:5px 25px;
+    }
+
+  }
+
+  
 }
 
-.App-link {
-  color: #61dafb;
+.teamTable table {
+  border:solid 3px;
+  border-color:blue;
+  text-align:center;
+  border-collapse: collapse;
+  font-size:14px;
+  
+
+  td,th {
+    padding:5px 15px;
+    border:solid 2px #D4D4D4;
+  }
+
+  th {
+    background-color:#E5E5E5;
+  }
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+
+.matchHistory {
+    margin-left:20px;
+
+  input {
+    width:15px;
+    margin:2px;
+    -moz-appearance: textfield; 
+    appearance: textfield; 
   }
-  to {
-    transform: rotate(360deg);
-  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
 }
+
+  input:first-child{
+    text-align:right;
+  }
+
+  :disabled {
+    border-style:none;
+    background-color: transparent ;
+  }
+
+  td:first-child, td:nth-child(2) { text-align:right; };
+  td:nth-child(4) input {text-align:left}
+}
+
+.scoreboard {
+  display:flex;
+}
+
+
