@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { MatchHistory } from "./MatchHistory";
 import { selectTeamTable, createTeam } from "./TeamTableSlice";
 
 export const TeamTable = () => {
@@ -54,6 +55,7 @@ export const TeamTable = () => {
                 </tbody>
               </table>
             </div>
+            <MatchHistory />
           </div>
         </div>
       </div>

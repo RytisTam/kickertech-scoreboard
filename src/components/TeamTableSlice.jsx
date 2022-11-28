@@ -36,6 +36,7 @@ export const TeamTableSlice = createSlice({
         }
       }
     },
+
     updateScore: (state, action) => {
       const currentMatch = state.matches[action.payload.matchID];
       const team = state.teams.find(
@@ -47,74 +48,14 @@ export const TeamTableSlice = createSlice({
 
       // Set match score
       currentMatch[action.payload.team] = Number(action.payload.score);
-
-      const countScore = (state, team) => {
-        let countDraws = 0;
-        let countWins = 0;
-        let countLoses = 0;
-        let countPoints = 0;
-
-        state.matches.map((match) => {
-          if (match.hasOwnProperty(team.teamName) && match.outcome !== null) {
-            if (match.outcome === "draw") {
-              countDraws++;
-            } else if (match.winner === team.teamName) {
-              countWins++;
-            } else {
-              countLoses++;
-            }
-          }
-        });
-        countPoints = countDraws + countWins * 3;
-
-        return (
-          (team.win = countWins),
-          (team.draw = countDraws),
-          (team.lost = countLoses),
-          (team.points = countPoints)
-        );
-      };
-
-      if (currentMatch.played === false) {
-        if (
-          currentMatch[team.teamName] !== null &&
-          currentMatch[opposingTeam.teamName] !== null
-        ) {
-          currentMatch.played = true;
-          team.played++;
-          opposingTeam.played++;
-        }
-      }
-
-      if (
-        currentMatch[team.teamName] !== null &&
-        currentMatch[opposingTeam.teamName] !== null
-      ) {
-        if (
-          currentMatch[team.teamName] === currentMatch[opposingTeam.teamName]
-        ) {
-          currentMatch.outcome = "draw";
-        } else if (
-          currentMatch[team.teamName] > currentMatch[opposingTeam.teamName]
-        ) {
-          currentMatch.outcome = "has winner";
-          currentMatch.winner = team.teamName;
-        } else {
-          currentMatch.outcome = "has winner";
-          currentMatch.winner = opposingTeam.teamName;
-        }
-      }
-
-      // Count and update scores for team scoreboard.
-      countScore(state, team);
-      countScore(state, opposingTeam);
     },
   },
 });
 
-export const { createTeam } = TeamTableSlice.actions;
+export const { createTeam, updateScore } = TeamTableSlice.actions;
 
-export const selectTeamTable = (state) => state.TeamTable.teams;
+export const selectTeamTable = (state) =>
+  state.TeamTable.teams.slice().sort((a, b) => b.points - a.points);
 export const selectMatchTable = (state) => state.TeamTable.matches;
 
 export default TeamTableSlice.reducer;
