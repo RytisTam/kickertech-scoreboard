@@ -1,4 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
+import {
+  countScore,
+  determineOutcome,
+  isMatchPlayed,
+} from "../utils/teamTableHelperFunctions";
 
 export const TeamTableSlice = createSlice({
   name: "TeamTable",
@@ -48,6 +53,16 @@ export const TeamTableSlice = createSlice({
 
       // Set match score
       currentMatch[action.payload.team] = Number(action.payload.score);
+
+      // Check if both team scores are set, set points accordingly.
+      isMatchPlayed(currentMatch, team, opposingTeam);
+
+      // Determine winner/tie + check if score has been adjusted.
+      determineOutcome(currentMatch, team, opposingTeam);
+
+      // Count and update scores for team scoreboard.
+      countScore(state, team);
+      countScore(state, opposingTeam);
     },
   },
 });
