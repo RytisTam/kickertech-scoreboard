@@ -27,7 +27,7 @@ export const TeamTableSlice = createSlice({
         // Create a new match for every existing team, with newly added team
         // team.teamName - existing teams (from .map) / action.payload - newly added team.
         if (state.teams.length > 1) {
-          state.teams.map((team) =>
+          state.teams.forEach((team) =>
             team.teamName !== action.payload
               ? state.matches.push({
                   [team.teamName]: null,
